@@ -1,7 +1,10 @@
-const todos = require('./todos');
-const todoItems = require('./todoitems');
+const boards = require('./boards');
+const lists = require('./lists');
+const cards = require('./cards');
+
 
 module.exports = {
-  todos,
-  todoItems,
+  boards,
+  lists,
+  cards,
 };

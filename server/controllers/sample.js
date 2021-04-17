@@ -1,9 +1,9 @@
-const Todo = require('../models').Todo;
-const TodoItem = require('../models').TodoItem;
+const SampleModel = require('../models').Todo;
+const SampleAssociatedModel = require('../models').Todo;
 
 module.exports = {
   create(req, res) {
-    return Todo
+    return SampleModel
       .create({
         title: req.body.title,
       })
@@ -12,11 +12,11 @@ module.exports = {
   },
 
   list(req, res) {
-    return Todo
+    return SampleModel
       .findAll({
         include: [{
-          model: TodoItem,
-          as: 'todoItems',
+          model: SampleAssociatedModel,
+          as: 'sampleAccociated',
         }],
         order: [
           ['createdAt', 'DESC'],
@@ -28,7 +28,7 @@ module.exports = {
   },
 
   retrieve(req, res) {
-    return Todo
+    return SampleModel
       .findById(req.params.todoId, {
         include: [{
           model: TodoItem,
@@ -47,7 +47,7 @@ module.exports = {
   },
 
   update(req, res) {
-    return Todo
+    return SampleModel
       .findById(req.params.todoId, {
         include: [{
           model: TodoItem,
@@ -71,7 +71,7 @@ module.exports = {
   },
 
   destroy(req, res) {
-    return Todo
+    return SampleModel
       .findById(req.params.todoId)
       .then(todo => {
         if (!todo) {
