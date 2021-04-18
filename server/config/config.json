@@ -10,7 +10,7 @@
   "test": {
     "username": "todoer",
     "password": "none",
-    "database": "todos-dev",
+    "database": "todos-test",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"

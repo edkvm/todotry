@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     dueDate: {
       type: DataTypes.DATE,
-      defaultValue: false,
+      allowNull: true,
     },
   });
   Card.associate = (models) => {
@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'cardId',
       as: 'activities',
       onDelete: 'CASCADE',
+    });
+    Card.belongsToMany(models.User, {
+      through: models.Member,
+      foreignKey: 'cardId',
     });
   };
   

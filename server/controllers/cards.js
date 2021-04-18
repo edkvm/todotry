@@ -1,4 +1,5 @@
 const Card = require('../models').Card;
+const Member = require('../models').Member;
 const List = require('../models').List;
 const Activity = require('../models').Activity;
 
@@ -48,6 +49,29 @@ module.exports = {
             });
         })
         .catch(error => res.status(400).send(error));
+  },
+
+  addMember(req, res) {
+    return Card
+      .findByPk(req.params.cardId)
+      .then((card) => {
+        if (card === null) {
+          return res.status(404).send({ error: 'card does exist '});
+        }
+        Member
+          .create({
+            userId: req.body.memberId,
+            cardId: card.id,
+            relationshipType: 'user_watcher',
+          })
+          .then(() => {
+            res.status(201).send(card); 
+          });
+      })
+      .catch(error => {
+        console.log(error)
+        res.status(400).send(error)
+      });
   },
 
   retrieve(req, res) {

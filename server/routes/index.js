@@ -10,12 +10,17 @@ module.exports = (app) => {
     message: 'Welcome to the Todos API!',
   }));
 
+  // Health
+  app.get('/_health', (_, res) => {
+    res.status(200).send({ status: 'ok', code: 200 });
+  });
   // Users
   app.post('/users', usersController.create);
   app.get('/users', usersController.list);
 
   // Board
   app.post('/boards', boardsController.create);
+  app.get('/boards', boardsController.list);
   app.post('/boards/:boardId/lists', listsController.create);
   app.post('/boards/:boardId/labels', labelsController.create);
   
@@ -23,4 +28,5 @@ module.exports = (app) => {
   app.post('/lists/:listId/cards', cardsController.create);
   app.post('/cards/:cardId/comments', cardsController.comment);
   app.get('/cards/:cardId', cardsController.retrieve);
+  app.patch('/cards/:cardId/members', cardsController.addMember);
 };

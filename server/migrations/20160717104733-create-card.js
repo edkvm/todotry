@@ -17,7 +17,7 @@ module.exports = {
       },
       dueDate: {
         allowNull: true,
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
       },
       createdAt: {
         allowNull: false,

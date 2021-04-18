@@ -6,6 +6,12 @@ curl --header "Content-Type: application/json" \
   http://localhost:8000/api/users
 
 curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"username":"hello", "email":"hello@gmail.com"}' \
+  http://localhost:8000/api/users
+
+
+curl --header "Content-Type: application/json" \
   --request GET \
   http://localhost:8000/api/users
 
@@ -42,3 +48,9 @@ curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"message":"First Comment"}' \
   http://localhost:8000/api/cards/2/comments
+
+## Test Card Add member 
+curl --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{"memberId": 7}' \
+  http://localhost:8000/api/cards/2/members

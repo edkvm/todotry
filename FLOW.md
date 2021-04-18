@@ -26,8 +26,9 @@
     - A card is created on a list
     - A card should be created with an Order
 [ ] View Card
-[ ] Add fields to Card
-    - Has: ?checkList, ?labels, ?members
+[x] Add ?members to Card
+[ ] Add Fields to Card
+    - Has: ?checkList, ?labels
 [x] Comment on Card
     - using Activity
 [ ] Add a due Date to a Card

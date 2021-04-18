@@ -31,6 +31,13 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+  list(req, res) {
+    return Board
+      .findAll()
+      .then((boards) => res.status(200).send(boards))
+      .catch(e => res.status(500).send(e))
+  },
+
   listActivities(req, res) {
     return Board
       .findById(req.params.boardId, {
