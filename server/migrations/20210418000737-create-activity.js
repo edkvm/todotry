@@ -13,9 +13,14 @@ module.exports = {
         allowNull: true,
       },
       kind: {
-        type: Sequelize.ENUM('activity_card_created', 'activity_card_duedate_add', 'activity_list_created', 'activity_user_commented_on_card')
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      
+      isGenerated: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -25,13 +30,14 @@ module.exports = {
         type: Sequelize.DATE
       },
       boardId: {
-        type: Sequelize.INTEGER
-      },
-      listId: {
-        type: Sequelize.INTEGER
-      },
-      cardId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Boards',
+          key: 'id',
+          as: 'boardId',
+        },
       },
       listId: {
         type: Sequelize.INTEGER,
@@ -40,6 +46,15 @@ module.exports = {
           model: 'Lists',
           key: 'id',
           as: 'listId',
+        },
+      },
+      cardId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Cards',
+          key: 'id',
+          as: 'cardId',
         },
       },
     });

@@ -1,8 +1,10 @@
 ### TODO
 [x] Create a User
     - Has: username, email
-[ ] Create an Activity
+[x] Create an Activity
     - Has: comment, kind
+[ ] Create Labels
+    - Has: ?name, color    
 [ ] Create Board
     - Has: name
     A board should be created with predifiend labels
@@ -16,8 +18,7 @@
     - Add activity
 [ ] Arrange List in board
     - Should be done using pos
-[ ] Create Labels
-    - Has: ?name, color
+
 [ ] Update Label
     - Change name
 [ ] Create a Card
