@@ -10,10 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'boardId',
       as: 'lists',
     });
-    Board.hasMany(models.Label, {
-      foreignKey: 'boardId',
-      as: 'labels',
-    });
   };
   return Board;
 };

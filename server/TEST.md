@@ -1,3 +1,16 @@
+
+## Test User
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"username":"edkvm", "email":"edkvmn@gmail.com"}' \
+  http://localhost:8000/api/users
+
+## Test User email error
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"username":"edkvm", "email":"edkvmngmail.com"}' \
+  http://localhost:8000/api/users
+
 ## Test board
 curl --header "Content-Type: application/json" \
   --request POST \

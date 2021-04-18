@@ -1,11 +1,12 @@
 ### TODO
-[ ] Create a User
+[x] Create a User
     - Has: username, email
 [ ] Create an Activity
     - Has: comment, kind
 [ ] Create Board
     - Has: name
     A board should be created with predifiend labels
+    - Add activity
 [ ] List Boadrs
 [ ] Update Board
     - Change name
@@ -35,7 +36,9 @@
 [ ] Create checklist on a Card
 
 [ ] List Activity by(Card/Board)
+[ ] List Comments(Activity) on Card with filter
 [ ] Del Board/Card/List
+
 ***[ ] Add Custome filed to a card
 
 
@@ -100,7 +103,7 @@ Activity
     listId
     cardId
     message
-    kind
+    kind(Enum)
 
 Members
     userId
