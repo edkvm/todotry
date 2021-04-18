@@ -10,8 +10,22 @@ module.exports = {
         description: req.body.description,
         dueDate: req.body.dueDate || null,
         listId: req.params.listId,
+        pos: req.body.pos || 0,
       })
-      .then(card => res.status(201).send(card))
+      .then((card) => {
+        List
+          .findByPk(card.listId)
+          .then((list) => {
+            Activity.create(
+              {
+                kind: Activity.ACTIVITY_CARD_CREATED,
+                cardId: card.id,
+                listId: card.listId,
+                boardId: list.boardId,
+              })
+              .then(() => res.status(201).send(card))
+          });
+      })
       .catch(error => res.status(400).send(error));
   },
 
@@ -28,61 +42,28 @@ module.exports = {
                   kind: Activity.ACTIVITY_USER_COMMENTED_ON_CARD ,
                   listId: card.listId,
                   boardId: list.boardId,
+                  isGenerate: false,
                 })
                 .then(() => res.status(201).send(card));
-            })
-          
-          }
-        )
+            });
+        })
         .catch(error => res.status(400).send(error));
   },
 
-  // update(req, res) {
-  //   return TodoItem
-  //     .find({
-  //       where: {
-  //         id: req.params.todoItemId,
-  //         todoId: req.params.todoId,
-  //       },
-  //     })
-  //     .then(todoItem => {
-  //       if (!todoItem) {
-  //         return res.status(404).send({
-  //           message: 'TodoItem Not Found',
-  //         });
-  //       }
+  retrieve(req, res) {
+    return Card
+      .findByPk(req.params.cardId, {
+        include: [{
+          model: Activity,
+          as: 'activities',
+        }],
+      })
+      .then((card) => {
+        res.status(200).send(card);
+      })
+      .catch((e) => {
+        res.status(500).send(e)
+      });
 
-  //       return todoItem
-  //         .update({
-  //           content: req.body.content || todoItem.content,
-  //           complete: req.body.complete || todoItem.complete,
-  //         })
-  //         .then(updatedTodoItem => res.status(200).send(updatedTodoItem))
-  //         .catch(error => res.status(400).send(error));
-  //     })
-  //     .catch(error => res.status(400).send(error));
-  // },
-
-  // destroy(req, res) {
-  //   return TodoItem
-  //     .find({
-  //       where: {
-  //         id: req.params.todoItemId,
-  //         todoId: req.params.todoId,
-  //       },
-  //     })
-  //     .then(todoItem => {
-  //       if (!todoItem) {
-  //         return res.status(404).send({
-  //           message: 'TodoItem Not Found',
-  //         });
-  //       }
-
-  //       return todoItem
-  //         .destroy()
-  //         .then(() => res.status(204).send())
-  //         .catch(error => res.status(400).send(error));
-  //     })
-  //     .catch(error => res.status(400).send(error));
-  // },
+  }
 };

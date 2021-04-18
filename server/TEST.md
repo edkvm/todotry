@@ -5,6 +5,10 @@ curl --header "Content-Type: application/json" \
   --data '{"username":"edkvm", "email":"edkvmn@gmail.com"}' \
   http://localhost:8000/api/users
 
+curl --header "Content-Type: application/json" \
+  --request GET \
+  http://localhost:8000/api/users
+
 ## Test User email error
 curl --header "Content-Type: application/json" \
   --request POST \
@@ -26,5 +30,15 @@ curl --header "Content-Type: application/json" \
 ## Test Card
 curl --header "Content-Type: application/json" \
   --request POST \
-  --data '{"title":"First Task", "description":"Description First Task"}' \
-  http://localhost:8000/api/lists/1/cards
+  --data '{"title":"Sec Task", "description":"Description Sec Task"}' \
+  http://localhost:8000/api/lists/2/cards
+
+curl --header "Content-Type: application/json" \
+  --request GET \
+  http://localhost:8000/api/cards/2 
+
+## Test Card Comment
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"message":"First Comment"}' \
+  http://localhost:8000/api/cards/2/comments

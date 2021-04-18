@@ -4,7 +4,7 @@
 [x] Create an Activity
     - Has: comment, kind
 [x] Create Labels
-    - Has: ?name, color    
+    - Has: ?name, color
 [x] Create Board
     - Has: name
     A board should be created with predifiend labels
@@ -21,11 +21,14 @@
 
 [ ] Update Label
     - Change name
-[ ] Create a Card
-    - Has: title, ?description, ?dueDate, ?checkList, ?labels, ?members
+[x] Create a Card
+    - Has: title, ?description, ?dueDate
     - A card is created on a list
     - A card should be created with an Order
-[ ] Comment on Card
+[ ] View Card
+[ ] Add fields to Card
+    - Has: ?checkList, ?labels, ?members
+[x] Comment on Card
     - using Activity
 [ ] Add a due Date to a Card
     This will indicated that the card hase due Date
@@ -43,8 +46,10 @@
 ***[ ] Add Custome filed to a card
 
 
+Order Cards or Lists:
 
-
+[A|65500] [B|120000] [C|240000]
+B-(B-A)/2 => C 
 
 ### Schema
 *Auth

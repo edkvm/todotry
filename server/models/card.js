@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     Card.hasMany(models.Activity, {
       foreignKey: 'cardId',
+      as: 'activities',
       onDelete: 'CASCADE',
     });
   };

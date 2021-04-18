@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Activity.belongsTo(models.User, {
-        foreignKey: 'userId',
-        onDelete: 'NO ACTION',
-      });
       Activity.belongsTo(models.Board, {
         foreignKey: 'boardId',
+        onDelete: 'NO ACTION',
+      });
+      Activity.belongsTo(models.List, {
+        foreignKey: 'listId',
         onDelete: 'NO ACTION',
       });
       Activity.belongsTo(models.Card, {
