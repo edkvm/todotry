@@ -27,6 +27,10 @@ curl --header "Content-Type: application/json" \
   --data '{"name":"New Board"}' \
   http://localhost:8000/api/boards
 
+curl --header "Content-Type: application/json" \
+  --request GET \
+  http://localhost:8000/api/boards
+
 ## Test List
 curl --header "Content-Type: application/json" \
   --request POST \
