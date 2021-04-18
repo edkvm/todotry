@@ -3,9 +3,9 @@
     - Has: username, email
 [x] Create an Activity
     - Has: comment, kind
-[ ] Create Labels
+[x] Create Labels
     - Has: ?name, color    
-[ ] Create Board
+[x] Create Board
     - Has: name
     A board should be created with predifiend labels
     - Add activity

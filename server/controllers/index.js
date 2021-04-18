@@ -2,6 +2,7 @@ const boards = require('./boards');
 const lists = require('./lists');
 const cards = require('./cards');
 const users = require('./users');
+const labels = require('./labels');
 
 
 module.exports = {
@@ -9,4 +10,5 @@ module.exports = {
   lists,
   cards,
   users,
+  labels,
 };

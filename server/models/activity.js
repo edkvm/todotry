@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'boardId',
         onDelete: 'NO ACTION',
       });
+      Activity.belongsTo(models.Card, {
+        foreignKey: 'cardId',
+        onDelete: 'NO ACTION',
+      });
     }
   };
   Activity.init({

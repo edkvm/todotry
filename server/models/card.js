@@ -18,6 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'listId',
       onDelete: 'CASCADE',
     });
+    Card.hasMany(models.Activity, {
+      foreignKey: 'cardId',
+      onDelete: 'CASCADE',
+    });
   };
+  
   return Card;
 };
