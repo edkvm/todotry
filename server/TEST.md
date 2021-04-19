@@ -27,6 +27,7 @@ curl --header "Content-Type: application/json" \
   --data '{"name":"New Board"}' \
   http://localhost:8000/api/boards
 
+### Show Boards
 curl --header "Content-Type: application/json" \
   --request GET \
   http://localhost:8000/api/boards
@@ -37,6 +38,16 @@ curl --header "Content-Type: application/json" \
   --data '{"name":"Updated Board"}' \
   http://localhost:8000/api/boards/22
 
+### Show all Labels in Board
+curl --header "Content-Type: application/json" \
+  --request GET \
+  http://localhost:8000/api/boards/27/labels
+
+### Update Label in Board
+curl --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{"name":"MUST"}' \
+  http://localhost:8000/api/boards/27/labels/10
 
 ## Test List
 curl --header "Content-Type: application/json" \
@@ -46,7 +57,7 @@ curl --header "Content-Type: application/json" \
 
 ### Change list position
 curl --header "Content-Type: application/json" \
-  --request POST \
+  --request PATCH \
   --data '{"pos": 120000}' \
   http://localhost:8000/api/boards/27/lists/2
 

@@ -9,17 +9,17 @@
     - Has: name
     A board should be created with predifiend labels
     - Add activity
-[ ] List Boadrs
-[ ] Update Board
+[x] Show Boadrs
+[x] Update Board
     - Change name
-[ ] Create a List
+[x] Create a List
     - Has: name, pos
     - Create a list under a board
     - Add activity
-[ ] Arrange List in board
+[x] Arrange List in board
     - Should be done using pos
-
-[ ] Update Label
+[x] Show Labels on Board
+[x] Update Label
     - Change name
 [x] Create a Card
     - Has: title, ?description, ?dueDate
@@ -40,8 +40,8 @@
     - This should also adds an activity entry
 [ ] Create checklist on a Card
 
-[ ] List Activity by(Card/Board)
-[ ] List Comments(Activity) on Card with filter
+[ ] Show Activity by(Card/Board)
+[ ] Show Comments(Activity) on Card with filter
 [ ] Del Board/Card/List
 
 ***[ ] Add Custome filed to a card
@@ -51,6 +51,9 @@ Order Cards or Lists:
 
 [A|65500] [B|120000] [C|240000]
 B-(B-A)/2 => C 
+
+[A] [B] [C] [D] [E] 
+minListId A maxListId D
 
 ### Schema
 *Auth
