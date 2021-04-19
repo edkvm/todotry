@@ -1,7 +1,9 @@
 const Card = require('../models').Card;
 const Member = require('../models').Member;
+const Label = require('../models').Label;
 const List = require('../models').List;
 const Activity = require('../models').Activity;
+const CardLabel = require('../models').CardLabel;
 
 module.exports = {
   create(req, res) {
@@ -65,13 +67,63 @@ module.exports = {
             relationshipType: 'user_watcher',
           })
           .then(() => {
-            res.status(201).send(card); 
+            res.status(201).send(card);
           });
       })
-      .catch(error => {
-        console.log(error)
-        res.status(400).send(error)
+      .catch(e => res.status(400).send(e));
+  },
+
+  addLabel(req, res) {
+    return Card
+      .findByPk(req.params.cardId)
+      .then((card) => {
+        if (card === null) {
+          return res.status(404).send({ error: 'card does exist '});
+        }
+        CardLabel
+          .create({
+            labelId: req.body.labelId,
+            cardId: card.id,
+          })
+          .then(() => {
+            res.status(201).send(card);
+          });
+      })
+      .catch(e => {
+        
+        res.status(400).send(e)
       });
+  },
+
+  moveCard(req, res) {
+    return Card
+      .findByPk(req.params.cardId)
+      .then((card) => {
+        let prevListId = card.listId
+        card
+          .update({
+            pos: req.body.pos || card.pos,
+            listId: req.body.listId || card.listId,
+          })
+          .then(() => {
+            // Card Changed Lists
+            if (req.body.listId || req.body.listId === prevListId) {
+              return List
+                .findByPk(card.listId)
+                .then((list) => {
+                  Activity.create(
+                    {
+                      kind: Activity.ACTIVITY_CARD_MOVED_LIST,
+                      cardId: card.id,
+                      listId: card.listId,
+                      boardId: list.boardId,
+                    });
+                });
+            }
+          })
+          .then(() => res.status(200).send(card));
+      })
+      .catch(e => req.status(500).send(e));
   },
 
   retrieve(req, res) {
@@ -80,12 +132,18 @@ module.exports = {
         include: [{
           model: Activity,
           as: 'activities',
+        }, {
+          model: Label,
+          as: 'labels',
+          through: { attributes: [] }
         }],
+        
       })
       .then((card) => {
         res.status(200).send(card);
       })
       .catch((e) => {
+        console.log(e);
         res.status(500).send(e)
       });
 

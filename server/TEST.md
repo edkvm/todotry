@@ -61,24 +61,33 @@ curl --header "Content-Type: application/json" \
   --data '{"pos": 120000}' \
   http://localhost:8000/api/boards/27/lists/2
 
-## Test Card
+## Card
+
+### Test Create Card 
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"title":"Sec Task", "description":"Description Sec Task"}' \
   http://localhost:8000/api/lists/2/cards
 
+### Get Card
 curl --header "Content-Type: application/json" \
   --request GET \
   http://localhost:8000/api/cards/2 
 
-## Test Card Comment
+### Test Card Comment
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"message":"First Comment"}' \
   http://localhost:8000/api/cards/2/comments
 
-## Test Card Add member 
+### Test Card Add member 
 curl --header "Content-Type: application/json" \
   --request PATCH \
-  --data '{"memberId": 7}' \
-  http://localhost:8000/api/cards/2/members
+  --data '{"labelId": 10}' \
+  http://localhost:8000/api/cards/2/labels
+
+### Test Move Card
+curl --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{"pos": 120000}' \
+  http://localhost:8000/api/cards/2/move

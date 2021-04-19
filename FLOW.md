@@ -25,23 +25,23 @@
     - Has: title, ?description, ?dueDate
     - A card is created on a list
     - A card should be created with an Order
-[ ] View Card
+[x] View Card
 [x] Add ?members to Card
-[ ] Add Fields to Card
-    - Has: ?checkList, ?labels
+[x] Add Labels to Card
 [x] Comment on Card
     - using Activity
+[x] Associate a Card with a multiple Users
+[x] Move Card between Lists
+    - Change list
+    - This should also adds an activity entry
 [ ] Add a due Date to a Card
     This will indicated that the card hase due Date
     This should create an activity entry
-[ ] Associate a Card with a multiple Users
-[ ] Move Card between Lists
-    - Change list
-    - This should also adds an activity entry
 [ ] Create checklist on a Card
 
 [ ] Show Activity by(Card/Board)
 [ ] Show Comments(Activity) on Card with filter
+[ ] Add CheckItems to Card
 [ ] Del Board/Card/List
 
 ***[ ] Add Custome filed to a card

@@ -9,7 +9,10 @@ module.exports = {
       })
       .then((list) => {
         list
-          .createActivity({ kind: Activity.ACTIVITY_LIST_CREATED })
+          .createActivity({ 
+            listId: list.id,
+            boardId: req.params.boardId,
+            kind: Activity.ACTIVITY_LIST_CREATED })
           .then(() => res.status(201).send(list));
       })
       .catch((error) => res.status(400).send(error));

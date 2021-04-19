@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: true,
     },
+    pos: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+      defaultValue: 64000,
+    },
   });
   Card.associate = (models) => {
     Card.belongsTo(models.List, {
@@ -26,6 +31,11 @@ module.exports = (sequelize, DataTypes) => {
     Card.belongsToMany(models.User, {
       through: models.Member,
       foreignKey: 'cardId',
+    });
+    Card.belongsToMany(models.Label, {
+      through: models.CardLabel,
+      foreignKey: 'cardId',
+      as: 'labels',
     });
   };
   

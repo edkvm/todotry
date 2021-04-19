@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'boardId',
         onDelete: 'CASCADE',
       });
+      Label.belongsToMany(models.Card, {
+        through: models.CardLabel,
+        foreignKey: 'labelId',
+      });
     }
   }
   Label.init({

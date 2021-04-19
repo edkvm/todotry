@@ -3,6 +3,7 @@ const ACTIVITY_CARD_DUEDATE_ADD = 'activity_card_duedate_add';
 const ACTIVITY_LIST_CREATED = 'activity_list_created';
 const ACTIVITY_BOARD_CREATED = 'activity_board_created';
 const ACTIVITY_USER_COMMENTED_ON_CARD = 'activity_user_commented_on_card';
+const ACTIVITY_CARD_MOVED_LIST = 'activity_card_moved_list';
 
 module.exports = (sequelize, DataTypes) => {
   const Activity = sequelize.define('Activity', {
@@ -26,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Activity.ACTIVITY_CARD_CREATED = ACTIVITY_CARD_CREATED;
+  Activity.ACTIVITY_CARD_MOVED_LIST = ACTIVITY_CARD_MOVED_LIST;
   Activity.ACTIVITY_CARD_DUEDATE_ADD = ACTIVITY_CARD_DUEDATE_ADD;
   Activity.ACTIVITY_LIST_CREATED = ACTIVITY_LIST_CREATED;
   Activity.ACTIVITY_BOARD_CREATED = ACTIVITY_BOARD_CREATED;

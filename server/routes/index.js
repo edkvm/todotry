@@ -24,7 +24,7 @@ module.exports = (app) => {
   app.patch('/boards/:boardId', boardsController.update);
 
   app.post('/boards/:boardId/lists', listsController.create);
-  app.patch('/boards/:boardId/lists/:listId', listsController.moveList);
+  app.patch('/boards/:boardId/lists/:listId/move', listsController.moveList);
   
   // Label
   app.post('/boards/:boardId/labels', labelsController.create);
@@ -36,4 +36,6 @@ module.exports = (app) => {
   app.post('/cards/:cardId/comments', cardsController.comment);
   app.get('/cards/:cardId', cardsController.retrieve);
   app.patch('/cards/:cardId/members', cardsController.addMember);
+  app.patch('/cards/:cardId/labels', cardsController.addLabel);
+  app.patch('/cards/:cardId/move', cardsController.moveCard);
 };
