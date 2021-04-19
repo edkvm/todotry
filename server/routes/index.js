@@ -21,8 +21,11 @@ module.exports = (app) => {
   // Board
   app.post('/boards', boardsController.create);
   app.get('/boards', boardsController.list);
+  app.patch('/boards/:boardId', boardsController.update);
+  
   app.post('/boards/:boardId/lists', listsController.create);
   app.post('/boards/:boardId/labels', labelsController.create);
+  
   
   // Card
   app.post('/lists/:listId/cards', cardsController.create);

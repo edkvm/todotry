@@ -38,9 +38,22 @@ module.exports = {
       .catch(e => res.status(500).send(e))
   },
 
+  update(req, res) {
+    return Board
+      .findByPk(req.params.boardId)
+      .then((board) => {
+        board
+          .update({
+            name: req.body.name,
+          })
+          .then(() => res.status(200).send(board));
+      })
+      .catch(e => res.status(500).send(e));
+  },
+
   listActivities(req, res) {
     return Board
-      .findById(req.params.boardId, {
+      .findByPk(req.params.boardId, {
         include: [{
           model: Activity,
           as: 'activities',
