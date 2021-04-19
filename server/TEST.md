@@ -31,11 +31,24 @@ curl --header "Content-Type: application/json" \
   --request GET \
   http://localhost:8000/api/boards
 
+### Update Board name
+curl --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{"name":"Updated Board"}' \
+  http://localhost:8000/api/boards/22
+
+
 ## Test List
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"title":"Backlog"}' \
   http://localhost:8000/api/boards/1/lists
+
+### Change list position
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"pos": 120000}' \
+  http://localhost:8000/api/boards/27/lists/2
 
 ## Test Card
 curl --header "Content-Type: application/json" \

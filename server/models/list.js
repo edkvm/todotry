@@ -4,6 +4,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    pos: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+      defaultValue: 64000,
+    },
   });
   List.associate = (models) => {
     List.hasMany(models.Card, {

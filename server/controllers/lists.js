@@ -14,4 +14,17 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
+
+  moveList(req, res) {
+    return List
+      .findByPk(req.params.listId)
+      .then((list) => {
+        list
+          .update({
+            pos: req.body.pos || list.pos,
+          })
+          .then(() => res.status(200).send(list));
+      })
+      .catch(e => req.status(500).send(e));
+  },
 };
